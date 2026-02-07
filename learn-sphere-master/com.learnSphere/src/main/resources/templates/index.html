@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Learn Sphere | IT Learning Platform</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fbff, #eef3f9);
+            color: #263238;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 60px;
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1565c0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            color: #455a64;
+        }
+
+        .nav-links a:hover {
+            color: #1565c0;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 90px 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #455a64;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            padding: 14px 34px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #1976d2, #42a5f5);
+            color: #fff;
+        }
+
+        .cta-secondary {
+            border: 2px solid #1976d2;
+            color: #1976d2;
+        }
+
+        .cta-primary:hover {
+            box-shadow: 0 12px 25px rgba(25,118,210,0.35);
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary:hover {
+            background: #e3f2fd;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 60px;
+            background: #ffffff;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .stat-box h2 {
+            color: #1565c0;
+            font-size: 2rem;
+        }
+
+        .stat-box p {
+            color: #607d8b;
+            margin-top: 8px;
+        }
+
+        /* COURSES */
+        .section {
+            padding: 80px 60px;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.1rem;
+            margin-bottom: 40px;
+            color: #0d47a1;
+        }
+
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .course-card h3 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 0.9rem;
+            color: #546e7a;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: #f1f8ff;
+            padding: 30px;
+            border-radius: 18px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+        }
+
+        .testimonial span {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #0d47a1;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0d47a1;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 60px 30px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Learn Sphere</div>
+    <div class="nav-links">
+        <a href="#">Courses</a>
+        <a href="#">Roadmaps</a>
+        <a href="#">About</a>
+        <a th:href="@{/login}">Login</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Master IT Skills. Build Real Projects. Get Hired.</h1>
+        <p>
+            Learn Sphere helps you grow from beginner to industry-ready developer
+            with structured courses, hands-on practice, and career guidance.
+        </p>
+
+        <div class="cta-buttons">
+            <a th:href="@{/register}" class="cta-primary">Get Started</a>
+            <a th:href="@{/login}" class="cta-secondary">Login</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-box">
+        <h2>50+</h2>
+        <p>Courses</p>
+    </div>
+    <div class="stat-box">
+        <h2>10K+</h2>
+        <p>Students</p>
+    </div>
+    <div class="stat-box">
+        <h2>200+</h2>
+        <p>Projects</p>
+    </div>
+    <div class="stat-box">
+        <h2>95%</h2>
+        <p>Success Rate</p>
+    </div>
+</section>
+
+<!-- COURSES -->
+<section class="section">
+    <h2>Popular Learning Paths</h2>
+    <div class="courses">
+        <div class="course-card">
+            <h3>Java & Spring Boot</h3>
+            <p>Backend development with real-world projects.</p>
+        </div>
+        <div class="course-card">
+            <h3>DSA & Interviews</h3>
+            <p>Crack coding interviews with confidence.</p>
+        </div>
+        <div class="course-card">
+            <h3>Full Stack Web</h3>
+            <p>HTML, CSS, JS, React & backend integration.</p>
+        </div>
+        <div class="course-card">
+            <h3>Cloud & DevOps</h3>
+            <p>Deploy, scale and manage applications.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+    <h2>What Learners Say</h2>
+    <div class="testimonials">
+        <div class="testimonial">
+            <p>"Learn Sphere helped me land my first developer job."</p>
+            <span>— Amitesh, Java Developer</span>
+        </div>
+        <div class="testimonial">
+            <p>"Projects are very practical and interview-focused."</p>
+            <span>— Rohit, Full Stack Developer</span>
+        </div>
+        <div class="testimonial">
+            <p>"Best platform for structured IT learning."</p>
+            <span>— Abhay, Software Engineer</span>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Learn Sphere • Learn • Build • Grow 🚀
+</footer>
+
+</body>
+</html>

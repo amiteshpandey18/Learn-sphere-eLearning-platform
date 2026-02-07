@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Create Course | Learn Sphere</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f7fb;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 240px;
+      background: #0d47a1;
+      color: #fff;
+      padding: 30px 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .sidebar a {
+      display: block;
+      text-decoration: none;
+      color: #e3f2fd;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    /* MAIN */
+    .main {
+      flex: 1;
+      padding: 50px 60px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #263238;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      color: #607d8b;
+      margin-bottom: 35px;
+    }
+
+    .course-card {
+      background: #ffffff;
+      max-width: 520px;
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #37474f;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn-create {
+      background: linear-gradient(135deg, #1976d2, #42a5f5);
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn-create:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(25,118,210,0.35);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+      }
+      .main {
+        padding: 30px;
+      }
+    }
+  </style>
+
+  <script>
+    function handleFormSubmission(event) {
+      event.preventDefault();
+      alert("Course added successfully!");
+      event.target.submit();
+    }
+  </script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Learn Sphere</h2>
+  <a href="/trainerHome">Dashboard</a>
+  <a href="/createCourse">Create Course</a>
+  <a href="/addLesson">Add Lesson</a>
+  <a href="/showCourses">View Courses</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="page-title">Create New Course</div>
+  <div class="page-subtitle">Set up a new course for your learners</div>
+
+  <form class="course-card"
+        action="/addCourse"
+        method="post"
+        onsubmit="handleFormSubmission(event)">
+
+    <label class="form-label">Course ID</label>
+    <input type="text"
+           class="form-control"
+           name="courseId"
+           placeholder="e.g. JAVA101"
+           required>
+
+    <label class="form-label">Course Name</label>
+    <input type="text"
+           class="form-control"
+           name="courseName"
+           placeholder="Java & Spring Boot Mastery"
+           required>
+
+    <label class="form-label">Course Price (₹)</label>
+    <input type="text"
+           class="form-control"
+           name="coursePrice"
+           placeholder="4999"
+           required>
+
+    <button type="submit" class="btn btn-create">
+      Create Course
+    </button>
+
+  </form>
+
+</div>
+
+</body>
+</html>

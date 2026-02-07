@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Join Learn Sphere</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(120deg, #fdfbfb, #ebedee);
+      display: flex;
+    }
+
+    /* LEFT PANEL */
+    .left-panel {
+      flex: 1;
+      padding: 70px 60px;
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-panel h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #0d47a1;
+      margin-bottom: 20px;
+    }
+
+    .left-panel p {
+      font-size: 1.05rem;
+      color: #455a64;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .path {
+      margin-top: 30px;
+    }
+
+    .path div {
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+      color: #37474f;
+    }
+
+    .path div::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #1976d2;
+      font-weight: bold;
+    }
+
+    /* RIGHT PANEL */
+    .right-panel {
+      flex: 1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .register-box {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px;
+      border-radius: 22px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+      animation: slideIn 0.7s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .register-box h2 {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 25px;
+      color: #263238;
+    }
+
+    .form-control {
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+
+    .role-select {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .role-card {
+      flex: 1;
+      border: 2px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .role-card input {
+      display: none;
+    }
+
+    .role-card:hover {
+      border-color: #1976d2;
+      background: #f1f8ff;
+      transform: translateY(-3px);
+    }
+
+    .role-card input:checked + label {
+      color: #1976d2;
+      font-weight: 600;
+    }
+
+    .submit-btn {
+      width: 100%;
+      border-radius: 30px;
+      padding: 12px;
+      background: linear-gradient(135deg, #1976d2, #42a5f5);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(25,118,210,0.3);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #607d8b;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+      .left-panel, .right-panel {
+        padding: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LEFT CONTENT -->
+<div class="left-panel">
+  <h1>Start Your IT Career</h1>
+  <p>
+    Learn Sphere is a career-focused learning platform built for developers.
+    Learn by doing real projects and follow structured learning paths.
+  </p>
+
+  <div class="path">
+    <div>Structured learning paths</div>
+    <div>Hands-on coding projects</div>
+    <div>Interview preparation</div>
+    <div>Trainer & student ecosystem</div>
+  </div>
+</div>
+
+<!-- RIGHT FORM -->
+<div class="right-panel">
+  <form class="register-box" action="/addUser" method="post">
+
+    <h2>Create Your Account</h2>
+
+    <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+    <input type="password" class="form-control" name="password" placeholder="Create Password" required>
+
+    <div class="role-select">
+      <div class="role-card">
+        <input type="radio" name="role" value="trainer" id="trainer" required>
+        <label for="trainer">👨‍🏫 Trainer</label>
+      </div>
+      <div class="role-card">
+        <input type="radio" name="role" value="student" id="student">
+        <label for="student">🎓 Student</label>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Join Learn Sphere →</button>
+
+    <div class="footer">
+      Already have an account? <a href="/login">Login</a>
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>
